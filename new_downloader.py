@@ -88,7 +88,7 @@ def con_downloader():
                     print('이미 존재하는 콘')
                 else:
                     os.makedirs("{}".format(title))
-                    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+                    with concurrent.futures.ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
                         executor.map(imgDownload, result)
                     remover(f"{title}")
 
